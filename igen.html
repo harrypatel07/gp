@@ -3,6 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image and Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #image-container {
+            position: relative;
+            display: inline-block;
+        }
+        #overlay-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dynamic Image with Text</h1>
+    <div id="image-container">
+        <img id="dynamic-image" src="" alt="Image" width="600" />
+        <div id="overlay-text"></div>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                image: params.get('image'),  // Get the 'image' parameter
+                text: params.get('text')     // Get the 'text' parameter
+            };
+        }
+
+        // Get the parameters
+        const params = getUrlParams();
+
+        // Set the image source and text overlay if parameters are provided
+        const imgElement = document.getElementById('dynamic-image');
+        const textElement = document.getElementById('overlay-text');
+
+        if (params.image) {
+            imgElement.src = decodeURIComponent(params.image);  // Set the image URL
+        }
+
+        if (params.text) {
+            textElement.textContent = decodeURIComponent(params.text);  // Set the text
+        }
+    </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Canvas Text Overlay Example</title>
 </head>
 <body>
@@ -34,3 +99,4 @@
     </script>
 </body>
 </html>
+ -->
