@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Canvas Text Overlay Example</title>
+</head>
+<body>
+    <!-- Canvas element where the image and text will be rendered -->
+    <canvas id="myCanvas" width="600" height="400"></canvas>
+
+    <script>
+        // Get the canvas and its context
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Load the background image
+        const backgroundImage = new Image();
+        backgroundImage.src = 'https://rukminim2.flixcart.com/image/832/832/jjbqufk0/poster/d/q/t/large-vlpers000770-beautiful-aishwarya-rai-vinyl-poster-original-imaerhr7bucfehfj.jpeg?q=70&crop=false'; // Replace with your custom image URL
+
+        // When the image is loaded, draw it on the canvas
+        backgroundImage.onload = function() {
+            // Draw the background image on the canvas
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+            // Set text properties
+            ctx.font = '30px Arial'; // Set font size and type
+            ctx.fillStyle = 'white'; // Set text color
+            ctx.textAlign = 'center'; // Center the text horizontally
+
+            // Add text overlay
+            ctx.fillText('Hello World!', canvas.width / 2, canvas.height / 2); // Center the text on the canvas
+        };
+    </script>
+</body>
+</html>
